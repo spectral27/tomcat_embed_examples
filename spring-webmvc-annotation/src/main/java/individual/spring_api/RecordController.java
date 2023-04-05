@@ -1,13 +1,11 @@
 package individual.spring_api;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/records")
@@ -17,13 +15,8 @@ public class RecordController {
 	private RecordRepository recordRepository;
 	
 	@GetMapping
-	public List<Record> getRecords() {
-		return recordRepository.getRecords();
-	}
-	
-	@PostMapping
-	public void saveRecord(@RequestBody Record record) {
-		recordRepository.saveRecord(record);
+	public List<RecordObject> getRecords() {
+		return recordRepository.selectRecords();
 	}
 	
 }
